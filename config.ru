@@ -6,5 +6,6 @@ end
 
 use Rack::MethodOverride
 use UserController
+use DogController
 use ActivityController
 run ApplicationController
