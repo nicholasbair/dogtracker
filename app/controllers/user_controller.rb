@@ -1,4 +1,6 @@
 class UserController < ApplicationController
+  include Authable::InstanceMethods
+
   get '/signup' do
     erb :'users/signup'
   end

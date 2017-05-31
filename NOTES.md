@@ -26,3 +26,16 @@ user_id
 Name
 duration
 dog_id
+
+#### From Study Group
+helpers block in application controller is best practice vs. modules
+current_user.posts.build(params) #=> automatically create association
+if a form post fails, render instead of redirect to use the errors.messages
+before hook
+```
+  before do
+    if !logged_in
+      redirect '/index'
+    end
+  end
+```
