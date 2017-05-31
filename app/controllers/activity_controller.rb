@@ -11,6 +11,7 @@ class ActivityController < ApplicationController
   end
 
   get '/activities/new' do
+    @dogs = current_user.dogs
     erb :'/activities/new'
   end
 
@@ -20,18 +21,22 @@ class ActivityController < ApplicationController
   end
 
   post '/activities' do
-
+    redirect '/activities'
   end
 
   get '/activities/:id/edit' do
-
+    @activity = Activity.find(params[:id])
   end
 
   patch '/activities/:id' do
-
+    activity = Activity.find(params[:id])
+    activity.update()
+    redirect '/activities'
   end
 
   delete 'activities/:id/delete' do
-
+    activity = Activity.find(params[:id])
+    Activity.destroy(activity.id)
+    redirect '/activities'
   end
 end

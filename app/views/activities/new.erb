@@ -1,1 +1,15 @@
-hello from activity new
+<h1>Add an activity</h1>
+
+<form class="" action="/activities" method="post">
+  <label for="name">Name:</label>
+  <input type="text" name="name" value="">
+  <label for="name">Duration:</label>
+  <input type="text" name="duration" value="">
+  <label for="name">Dogs:</label>
+  <% @dogs.each do |dog| %>
+    <input type="checkbox" name="dogs[]" value="<%= dog.id %>">
+  <% end %>
+  <br><br>
+
+  <input type="submit" name="" value="submit">
+</form>

@@ -1,1 +1,15 @@
-hello from activity edit
+<h1>Edit an activity</h1>
+
+<form class="" action="/activities/<%= @activity.id %>" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+  <label for="name">Name:</label>
+  <input type="text" name="name" value="<%= @activity.name %>">
+  <label for="name">Duration:</label>
+  <input type="text" name="duration" value="<%= @activity.duration %>">
+  <label for="name">Dogs:</label>
+  <% @dogs.each do |dog| %>
+    <input type="text" name="dog" value="<%= @dog.name %>">
+  <% end %>
+
+  <input type="submit" name="" value="submit">
+</form>
