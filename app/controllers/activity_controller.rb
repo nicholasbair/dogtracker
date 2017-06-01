@@ -22,7 +22,10 @@ class ActivityController < ApplicationController
 
   post '/activities' do
     params[:dogs].each do |dog_id|
-      Dog.find(dog_id).activities.build(name: params[:name], duration: params[:duration]).save
+      Dog.find(dog_id).activities.build(
+        name: params[:name],
+        duration: params[:duration]
+      ).save
     end
     redirect '/activities'
   end
