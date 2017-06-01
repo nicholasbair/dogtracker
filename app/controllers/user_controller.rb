@@ -9,6 +9,7 @@ class UserController < ApplicationController
       email: params[:email],
       password: params[:password]
     )
+    session[:user_id] = user.id
     redirect '/activities'
   end
 
