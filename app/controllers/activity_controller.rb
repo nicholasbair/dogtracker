@@ -27,7 +27,6 @@ class ActivityController < ApplicationController
       dog_ids: params[:dogs]
     ).save
 
-    # binding.pry
     redirect '/activities'
   end
 
@@ -47,7 +46,7 @@ class ActivityController < ApplicationController
       activity.update(
       name: params[:name],
       duration: params[:duration],
-      dogs: params[:dogs] #TODO: update w/ dogs=
+      dog_ids: params[:dogs]
       )
     end
     redirect '/activities'

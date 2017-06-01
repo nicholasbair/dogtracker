@@ -9,7 +9,7 @@
   <label for="name">Dogs:</label>
   <% @dogs.each do |dog| %>
     <label for=""><%= dog.name %></label>
-    <input type="checkbox" name="dogs[]" value="<%= dog.id %>" <%= 'checked' if @activity.dogs.include?(dog.id) %>>
+    <input type="checkbox" name="dogs[]" value="<%= dog.id %>" <%= 'checked' if @activity.dog_ids.include?(dog.id) %>>
   <% end %>
 
   <input type="submit" name="" value="submit">
