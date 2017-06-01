@@ -1,4 +1,4 @@
-<p><%= current_user.username %> -> <%= @activity.name %> for <%= @activity.duration %></p>
+<p><%= @activity.dog.user.username %> -> <%= @activity.name %> for <%= @activity.duration %></p>
 
 <form class="" action="/activities/<%= @activity.id %>/delete" method="post">
   <input type="hidden" name="_method" value="DELETE">

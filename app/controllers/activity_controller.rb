@@ -32,23 +32,31 @@ class ActivityController < ApplicationController
 
   get '/activities/:id/edit' do
     @activity = Activity.find(params[:id])
-    @dogs = current_user.dogs
-    erb :'activities/edit'
+    if @activity.dog.user_id == current_user.id
+      @dogs = current_user.dogs
+      erb :'activities/edit'
+    else
+      redirect '/activities'
+    end
   end
 
   patch '/activities/:id' do
     activity = Activity.find(params[:id])
-    activity.update(
+    if activity.dog.user_id == current_user.id
+      activity.update(
       name: params[:name],
       duration: params[:duration],
       dog_id: params[:dogs][0]
-    )
+      )
+    end
     redirect '/activities'
   end
 
   delete '/activities/:id/delete' do
     activity = Activity.find(params[:id])
-    Activity.destroy(activity.id)
+    if activity.dog.user_id == current_user.id
+      Activity.destroy(activity.id)
+    end
     redirect '/activities'
   end
 end

@@ -26,18 +26,26 @@ class DogController < ApplicationController
 
   get '/dogs/:id/edit' do
     @dog = Dog.find(params[:id])
-    erb :'dogs/edit'
+    if @dog.user_id == current_user.id
+      erb :'dogs/edit'
+    else
+      redirect '/dogs'
+    end
   end
 
   patch '/dogs/:id' do
     dog = Dog.find(params[:id])
-    dog.update(name: params[:name])
+    if dog.user_id == current_user.id
+      dog.update(name: params[:name])
+    end
     redirect '/dogs'
   end
 
   delete '/dogs/:id/delete' do
     dog = Dog.find(params[:id])
-    Dog.destroy(dog.id)
+    if dog.user_id == current_user.id
+      Dog.destroy(dog.id)
+    end
     redirect '/dogs'
   end
 end
