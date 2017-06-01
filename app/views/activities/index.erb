@@ -1,1 +1,3 @@
-Hello from activity index
+<% @activities.each do |activity| %>
+  <p><%= current_user.username %> -> <%= activity.name %> for <%= activity.duration %></p>
+<% end %>

@@ -7,6 +7,7 @@
   <input type="text" name="duration" value="">
   <label for="name">Dogs:</label>
   <% @dogs.each do |dog| %>
+    <label for=""><%= dog.name %></label>
     <input type="checkbox" name="dogs[]" value="<%= dog.id %>">
   <% end %>
   <br><br>

@@ -8,7 +8,8 @@
   <input type="text" name="duration" value="<%= @activity.duration %>">
   <label for="name">Dogs:</label>
   <% @dogs.each do |dog| %>
-    <input type="text" name="dog" value="<%= @dog.name %>">
+    <label for=""><%= dog.name %></label>
+    <input type="checkbox" name="dogs[]" value="<%= dog.id %>" <%= 'checked' if @activity.dog.id == dog.id %>>
   <% end %>
 
   <input type="submit" name="" value="submit">
