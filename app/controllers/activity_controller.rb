@@ -21,18 +21,19 @@ class ActivityController < ApplicationController
   end
 
   post '/activities' do
-    params[:dogs].each do |dog_id|
-      Dog.find(dog_id).activities.build(
-        name: params[:name],
-        duration: params[:duration]
-      ).save
-    end
+    current_user.activities.build(
+      name: params[:name],
+      duration: params[:duration],
+      dog_ids: params[:dogs]
+    ).save
+
+    # binding.pry
     redirect '/activities'
   end
 
   get '/activities/:id/edit' do
     @activity = Activity.find(params[:id])
-    if @activity.dog.user_id == current_user.id
+    if @activity.user_id == current_user.id
       @dogs = current_user.dogs
       erb :'activities/edit'
     else
@@ -42,11 +43,11 @@ class ActivityController < ApplicationController
 
   patch '/activities/:id' do
     activity = Activity.find(params[:id])
-    if activity.dog.user_id == current_user.id
+    if activity.user_id == current_user.id
       activity.update(
       name: params[:name],
       duration: params[:duration],
-      dog_id: params[:dogs][0]
+      dogs: params[:dogs] #TODO: update w/ dogs=
       )
     end
     redirect '/activities'
@@ -54,7 +55,7 @@ class ActivityController < ApplicationController
 
   delete '/activities/:id/delete' do
     activity = Activity.find(params[:id])
-    if activity.dog.user_id == current_user.id
+    if activity.user_id == current_user.id
       Activity.destroy(activity.id)
     end
     redirect '/activities'
