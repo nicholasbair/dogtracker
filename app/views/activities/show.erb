@@ -1,6 +1,17 @@
-<p><%= activity.generate_story %></p>
+<div>
+  <img src="http://via.placeholder.com/50x50">
+  <h4>
+    <a href="/activities/<%= @activity.id %>">
+      <%= @activity.generate_story %>
+    </a>
+  </h4>
+</div>
+
+<a href="/activities/<%= @activity.id %>/edit">
+  <button class="btn btn-success" type="button">Edit activity</button>
+</a>
 
 <form class="" action="/activities/<%= @activity.id %>/delete" method="post">
   <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" name="" value="Delete">
+  <button class="btn btn-danger" type="submit">Delete activity</button>
 </form>
