@@ -1,3 +1,9 @@
 <% @dogs.each do |dog| %>
-  <p><%= dog.name %></p>
+  <div>
+    <h4>
+      <a href="/dogs/<%= dog.id %>">
+        <%= dog.name %>
+      </a>
+    </h4>
+  </div>
 <% end %>
