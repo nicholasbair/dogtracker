@@ -25,14 +25,20 @@ class ActivityController < ApplicationController
   end
 
   post '/activities' do
-    current_user.activities.build(
-      name: params[:name],
-      duration: params[:duration],
-      dog_ids: params[:dogs]
-    ).save
+    if !params[:dogs].nil?
+      current_user.activities.build(
+        name: params[:name],
+        duration: params[:duration],
+        dog_ids: params[:dogs]
+      ).save
+      flash[:message] = "Successfully created an activity!"
+      redirect '/activities'
+    else
+      flash[:message] = "Please select at least one dog."
+      @dogs = current_user.dogs
+      erb :'/activities/new'
+    end
 
-    flash[:message] = "Successfully created an activity!"
-    redirect '/activities'
   end
 
   get '/activities/:id/edit' do
@@ -47,15 +53,20 @@ class ActivityController < ApplicationController
 
   patch '/activities/:id' do
     activity = Activity.find(params[:id])
-    if activity.user_id == current_user.id
+    if activity.user_id == current_user.id && !params[:dogs].nil?
       activity.update(
       name: params[:name],
       duration: params[:duration],
       dog_ids: params[:dogs]
       )
       flash[:message] = "Successfully updated an activity!"
+      redirect '/activities'
+    else
+      flash[:message] = "Please select at least one dog."
+      @activity = Activity.find(params[:id])
+      @dogs = current_user.dogs
+      erb :'activities/edit'
     end
-    redirect '/activities'
   end
 
   delete '/activities/:id/delete' do
