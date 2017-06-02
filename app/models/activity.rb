@@ -1,5 +1,4 @@
-# Boot Error -> something went wrong while loading config.ru
-# require 'verbs'
+require 'verbs'
 
 class Activity < ActiveRecord::Base
   belongs_to :user
@@ -7,18 +6,26 @@ class Activity < ActiveRecord::Base
   has_many :dogs, through: :activity_dogs
   validates :name, :duration, presence: true
 
-  def action_past_tense
+  def activity_past_tense
+    Verbs::Conjugator.conjugate self.name, :tense => :past, :plurality => :singular, :aspect => :perfective
+  end
 
-  # *** Both work in tux
-  # undefined method 'verb' for 'walk':String
-    # 'walk'.verb.conjugate :tense => :past, :plurality => :singular, :aspect => :perfective
-    # => 'walked'
-  # NameError, uninitialized constant Activity::Verbs
-    # Verbs::Conjugator.conjugate self.name, :tense => :past, :plurality => :singular, :aspect => :perfective
-    # => 'walked'
+  def format_participants
+    result = ""
+    self.dogs.each.with_index do |dog, i|
+      if self.dogs.size > 1 && i == self.dogs.size - 1
+        result += " and " + dog.name
+      elsif i != 0
+        result += ", " + dog.name
+      else
+        result += dog.name
+      end
+    end
+
+    result
   end
 
   def generate_story
-    "#{self.user.username} #{self.action_past_tense} for #{self.duration} minutes."
+    "#{self.user.username} #{self.activity_past_tense} #{self.format_participants} for #{self.duration} minutes."
   end
 end
