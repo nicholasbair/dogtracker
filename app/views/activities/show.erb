@@ -1,5 +1,4 @@
 <div>
-  <img src="http://via.placeholder.com/50x50">
   <h4>
     <a href="/activities/<%= @activity.id %>">
       <%= @activity.generate_story %>
@@ -7,11 +6,13 @@
   </h4>
 </div>
 
-<a href="/activities/<%= @activity.id %>/edit">
-  <button class="btn btn-success" type="button">Edit activity</button>
-</a>
+<% if @activity.user_id == current_user.id %>
+  <a href="/activities/<%= @activity.id %>/edit">
+    <button class="btn btn-success" type="button">Edit activity</button>
+  </a>
 
-<form class="" action="/activities/<%= @activity.id %>/delete" method="post">
-  <input type="hidden" name="_method" value="DELETE">
-  <button class="btn btn-danger" type="submit">Delete activity</button>
-</form>
+  <form class="" action="/activities/<%= @activity.id %>/delete" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <button class="btn btn-danger" type="submit">Delete activity</button>
+  </form>
+<% end %>

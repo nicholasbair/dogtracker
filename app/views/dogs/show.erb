@@ -6,14 +6,17 @@
   </h4>
 </div>
 
-<a href="/dogs/<%= @dog.id %>/edit">
-  <button class="btn btn-success" type="button">Edit dog</button>
-</a>
+<% if @dog.user_id == current_user.id %>
+  <a href="/dogs/<%= @dog.id %>/edit">
+    <button class="btn btn-success" type="button">Edit dog</button>
+  </a>
 
-<form class="" action="/dogs/<%= @dog.id %>/delete" method="post">
-  <input type="hidden" name="_method" value="DELETE">
-  <button class="btn btn-danger" type="submit">Delete dog</button>
-</form>
+  <form class="" action="/dogs/<%= @dog.id %>/delete" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <button class="btn btn-danger" type="submit">Delete dog</button>
+  </form>
+<% end %>
+
 
 <h4>Recent Activities</h4>
 <% @dog.activities.each do |activity| %>
