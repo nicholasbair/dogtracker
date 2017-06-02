@@ -13,7 +13,7 @@ class UserController < ApplicationController
       email: params[:email],
       password: params[:password]
     )
-    if !user.errors
+    if user.errors.messages.empty?
       session[:user_id] = user.id
       flash[:message] = "Successfully created your account!"
       redirect '/activities'
