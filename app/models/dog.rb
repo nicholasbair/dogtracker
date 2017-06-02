@@ -5,6 +5,6 @@ class Dog < ActiveRecord::Base
   validates :user_id, presence: true
   validates :name, uniqueness: {
     scope: :user,
-    message: "should only have one dog with that name"
+    message: "must be unique"
   }
 end

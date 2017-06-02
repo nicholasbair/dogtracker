@@ -20,5 +20,9 @@ class ApplicationController < Sinatra::Base
     def current_user
       @current_user ||= User.find(session[:user_id])
     end
+
+    def parse_error_message(hash)
+      "#{hash[0].to_s} #{hash[1][0]}"
+    end
   end
 end

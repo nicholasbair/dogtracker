@@ -44,10 +44,4 @@ class UserController < ApplicationController
     session.clear
     redirect '/login'
   end
-
-  helpers do
-    def parse_error_message(hash)
-      "#{hash[0].to_s} #{hash[1][0]}"
-    end
-  end
 end

@@ -24,9 +24,14 @@ class DogController < ApplicationController
   end
 
   post '/dogs' do
-    current_user.dogs.build(name: params[:name]).save
-    flash[:message] = "Successfully added a dog!"
-    redirect '/dogs'
+    dog = current_user.dogs.build(name: params[:name])
+    if dog.save
+      flash[:message] = "Successfully added a dog!"
+      redirect '/dogs'
+    else
+      flash[:message] = parse_error_message(dog.errors.messages.first)
+      erb :'dogs/new'
+    end
   end
 
   get '/dogs/:id/edit' do
