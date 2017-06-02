@@ -1,16 +1,26 @@
-<h1>Add an activity</h1>
-
-<form class="" action="/activities" method="post">
-  <label for="name">Name:</label>
-  <input type="text" name="name" value="">
-  <label for="name">Duration:</label>
-  <input type="text" name="duration" value="">
-  <label for="name">Dogs:</label>
-  <% @dogs.each do |dog| %>
-    <label for=""><%= dog.name %></label>
-    <input type="checkbox" name="dogs[]" value="<%= dog.id %>">
-  <% end %>
-  <br><br>
-
-  <input type="submit" name="" value="submit">
-</form>
+<row>
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <h1>Add an activity</h1>
+    <form action="/activities" method="post">
+      <div class="form-group">
+        <input type="text" class="form-control" name="name" placeholder="Activity name">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="duration" placeholder="Duration">
+      </div>
+      <div class="form-group">
+        <label class="control-label">Dogs:</label>
+        <% @dogs.each do |dog| %>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="dogs[]" value="<%= dog.id %>">
+              <%= dog.name %>
+            </label>
+          </div>
+        <% end %>
+      </div>
+      <button class="btn btn-success" type="submit" name="submit">Add activity</button>
+    </form>
+  </div>
+</row>

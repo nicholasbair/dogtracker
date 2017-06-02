@@ -1,16 +1,27 @@
-<h1>Edit an activity</h1>
-
-<form class="" action="/activities/<%= @activity.id %>" method="post">
-  <input type="hidden" name="_method" value="PATCH">
-  <label for="name">Name:</label>
-  <input type="text" name="name" value="<%= @activity.name %>">
-  <label for="name">Duration:</label>
-  <input type="text" name="duration" value="<%= @activity.duration %>">
-  <label for="name">Dogs:</label>
-  <% @dogs.each do |dog| %>
-    <label for=""><%= dog.name %></label>
-    <input type="checkbox" name="dogs[]" value="<%= dog.id %>" <%= 'checked' if @activity.dog_ids.include?(dog.id) %>>
-  <% end %>
-
-  <input type="submit" name="" value="submit">
-</form>
+<row>
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <h1>Edit an activity</h1>
+    <form action="/activities<%= @activity.id %>" method="post">
+      <input type="hidden" name="_method" value="PATCH">
+      <div class="form-group">
+        <input type="text" class="form-control" name="name" value="<%= @activity.name %>">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="duration" value="<%= @activity.duration %>">
+      </div>
+      <div class="form-group">
+        <label class="control-label">Dogs:</label>
+        <% @dogs.each do |dog| %>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="dogs[]" value="<%= dog.id %>" <%= 'checked' if @activity.dog_ids.include?(dog.id) %>>
+              <%= dog.name %>
+            </label>
+          </div>
+        <% end %>
+      </div>
+      <button class="btn btn-success" type="submit" name="submit">Update activity</button>
+    </form>
+  </div>
+</row>
