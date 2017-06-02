@@ -13,9 +13,15 @@ class UserController < ApplicationController
       email: params[:email],
       password: params[:password]
     )
-    session[:user_id] = user.id
-    flash[:message] = "Successfully created your account!"
-    redirect '/activities'
+    if user
+      session[:user_id] = user.id
+      flash[:message] = "Successfully created your account!"
+      redirect '/activities'
+    else
+      binding.pry
+      # flash[:message]
+      erb :'/users/signup'
+    end
   end
 
   get '/login' do
