@@ -1,5 +1,5 @@
 require './config/environment'
-require 'securerandom'
+# require 'securerandom'
 
 class ApplicationController < Sinatra::Base
   configure do

@@ -1,5 +1,5 @@
 <% @activities.each do |activity| %>
   <a href="/activities/<%= activity.id %>/edit">
-    <%= activity.name %> for <%= activity.duration %>
+    <%= activity.generate_story %>
   </a>
 <% end %>
