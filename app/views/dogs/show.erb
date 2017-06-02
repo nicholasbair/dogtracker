@@ -14,3 +14,12 @@
   <input type="hidden" name="_method" value="DELETE">
   <button class="btn btn-danger" type="submit">Delete dog</button>
 </form>
+
+<h4>Recent Activities</h4>
+<% @dog.activities.each do |activity| %>
+  <p>
+    <a href="/activities/<%= activity.id %>">
+      <%= activity.generate_story %>
+    </a>
+  </p>
+<% end %>
