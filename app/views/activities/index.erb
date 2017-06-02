@@ -6,12 +6,10 @@
 <% end %>
 
 <div class="row">
-  <div class="col-md-7"></div>
-  <div class="col-md-5">
+  <div class="col-md-12">
     <h3>Activity Feed</h3>
     <% @activities.each do |activity| %>
       <div>
-        <img src="http://via.placeholder.com/50x50">
         <h4>
           <a href="/activities/<%= activity.id %>">
             <%= activity.generate_story %>
