@@ -1,4 +1,4 @@
-<p><%= @activity.name %> for <%= @activity.duration %></p>
+<p><%= activity.generate_story %></p>
 
 <form class="" action="/activities/<%= @activity.id %>/delete" method="post">
   <input type="hidden" name="_method" value="DELETE">

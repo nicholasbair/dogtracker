@@ -5,9 +5,19 @@
   </div>
 <% end %>
 
-<% @activities.each do |activity| %>
-  <a href="/activities/<%= activity.id %>/edit">
-    <%= activity.generate_story %>
-  </a>
-  <br>
-<% end %>
+<div class="row">
+  <div class="col-md-7"></div>
+  <div class="col-md-5">
+    <h3>Activity Feed</h3>
+    <% @activities.each do |activity| %>
+      <div>
+        <img src="http://via.placeholder.com/50x50">
+        <h4>
+          <a href="/activities/<%= activity.id %>/edit">
+            <%= activity.generate_story %>
+          </a>
+        </h4>
+      </div>
+    <% end %>
+  </div>
+</div>
