@@ -13,13 +13,12 @@ class UserController < ApplicationController
       email: params[:email],
       password: params[:password]
     )
-    if user
+    if !user.errors
       session[:user_id] = user.id
       flash[:message] = "Successfully created your account!"
       redirect '/activities'
     else
-      binding.pry
-      # flash[:message]
+      flash[:message] = parse_error_message(user.errors.messages.first)
       erb :'/users/signup'
     end
   end
@@ -35,7 +34,8 @@ class UserController < ApplicationController
       flash[:message] = "Successfully logged in!"
       redirect '/activities'
     else
-      redirect 'login'
+      flash[:message] = "Oops, something went wrong.  Please try again."
+      erb :'users/login'
     end
   end
 
@@ -43,5 +43,11 @@ class UserController < ApplicationController
     flash[:message] = "Successfully logged out."
     session.clear
     redirect '/login'
+  end
+
+  helpers do
+    def parse_error_message(hash)
+      "#{hash[0].to_s} #{hash[1][0]}"
+    end
   end
 end
