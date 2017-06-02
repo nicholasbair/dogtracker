@@ -1,4 +1,8 @@
+require 'rack-flash'
+
 class UserController < ApplicationController
+  use Rack::Flash
+
   get '/signup' do
     erb :'users/signup'
   end
@@ -10,6 +14,7 @@ class UserController < ApplicationController
       password: params[:password]
     )
     session[:user_id] = user.id
+    flash[:message] = "Successfully created your account!"
     redirect '/activities'
   end
 
@@ -21,6 +26,7 @@ class UserController < ApplicationController
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
+      flash[:message] = "Successfully logged in!"
       redirect '/activities'
     else
       redirect 'login'
@@ -28,6 +34,7 @@ class UserController < ApplicationController
   end
 
   get '/logout' do
+    flash[:message] = "Successfully logged out."
     session.clear
     redirect '/login'
   end

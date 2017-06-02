@@ -29,6 +29,8 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rack (2.0.3)
+    rack-flash3 (1.0.5)
+      rack
     rack-protection (2.0.0)
       rack
     rack-test (0.6.3)
@@ -80,6 +82,7 @@ DEPENDENCIES
   bcrypt
   dotenv
   pry
+  rack-flash3
   rake
   require_all
   shotgun
@@ -91,4 +94,4 @@ DEPENDENCIES
   verbs
 
 BUNDLED WITH
-   1.14.6
+   1.15.0
