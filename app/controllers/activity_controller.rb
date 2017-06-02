@@ -38,7 +38,6 @@ class ActivityController < ApplicationController
       @dogs = current_user.dogs
       erb :'/activities/new'
     end
-
   end
 
   get '/activities/:id/edit' do
