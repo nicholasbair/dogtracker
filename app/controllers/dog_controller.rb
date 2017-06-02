@@ -1,4 +1,8 @@
+require 'rack-flash'
+
 class DogController < ApplicationController
+  use Rack::Flash
+
   before do
     if !logged_in?
       redirect '/login'
@@ -21,6 +25,7 @@ class DogController < ApplicationController
 
   post '/dogs' do
     current_user.dogs.build(name: params[:name]).save
+    flash[:message] = "Successfully added a dog!"
     redirect '/dogs'
   end
 
@@ -37,6 +42,7 @@ class DogController < ApplicationController
     dog = Dog.find(params[:id])
     if dog.user_id == current_user.id
       dog.update(name: params[:name])
+      flash[:message] = "Successfully updated a dog!"
     end
     redirect '/dogs'
   end
@@ -45,6 +51,7 @@ class DogController < ApplicationController
     dog = Dog.find(params[:id])
     if dog.user_id == current_user.id
       Dog.destroy(dog.id)
+      flash[:message] = "Successfully deleted a dog!"
     end
     redirect '/dogs'
   end
