@@ -26,6 +26,6 @@ class Activity < ActiveRecord::Base
   end
 
   def generate_story
-    "#{self.user.username} #{self.activity_past_tense} #{self.format_participants} for #{self.duration} minutes."
+    "#{self.user.username.humanize} #{self.activity_past_tense} #{self.format_participants} for #{self.duration} minutes."
   end
 end
