@@ -33,11 +33,15 @@
 
 <div class="row">
   <h4>Recent Activities</h4>
-  <% @dog.activities.each do |activity| %>
-  <p>
-    <a href="/activities/<%= activity.id %>">
-      <%= activity.generate_story %>
-    </a>
-  </p>
-  <% end %>
+  <table class="table table-hover">
+    <% @dog.activities.each do |activity| %>
+      <tr>
+        <td>
+          <a href="/activities/<%= activity.id %>">
+            <%= activity.generate_story %>
+          </a>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 </div>

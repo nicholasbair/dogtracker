@@ -5,17 +5,16 @@
   </div>
 <% end %>
 
-<div class="row">
-  <div class="col-md-12">
-    <h3>Activity Feed</h3>
-    <% @activities.each do |activity| %>
-      <div>
-        <h4>
-          <a href="/activities/<%= activity.id %>">
-            <%= activity.generate_story %>
-          </a>
-        </h4>
-      </div>
-    <% end %>
-  </div>
-</div>
+<h3>Activity Feed</h3>
+
+<table class="table table-hover">
+  <% @activities.each do |activity| %>
+    <tr>
+      <td>
+        <a href="/activities/<%= activity.id %>">
+          <%= activity.generate_story %>
+        </a>
+      </td>
+    </tr>
+  <% end %>
+</table>
