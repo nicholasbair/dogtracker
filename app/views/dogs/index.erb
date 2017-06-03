@@ -24,8 +24,11 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <embed src="//sparksvg.me/circle.svg?<%= dog.parse_activity_data %>&rgba:51,122,183,0.7&current&max&min" width="210" height="60" type="image/svg+xml">
-        <!-- <embed src="//sparksvg.me/circle.svg?0,4,7,10,8,12,9,7,3,0,7,15,4,3,2,5&rgba:51,122,183,0.7&current&max&min" width="210" height="60" type="image/svg+xml"> -->
+        <% if dog.activities.size >= 10 %>
+          <embed src="//sparksvg.me/circle.svg?0,<%= dog.parse_activity_data %>&rgba:51,122,183,0.7&current&max&min" width="200" height="60" type="image/svg+xml">
+        <% else %>
+          <h5 class="pull-center">Add more activities to see graph</h5>
+        <% end %>
       </div>
     </div>
   </div>
