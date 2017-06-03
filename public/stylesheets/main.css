@@ -1,0 +1,8 @@
+.form-card {
+  background-color: #EEEEEE;
+  border-radius: 5px;
+  -webkit-box-shadow: 6px 4px 16px -4px rgba(0,0,0,0.75);
+  -moz-box-shadow: 6px 4px 16px -4px rgba(0,0,0,0.75);
+  box-shadow: 6px 4px 16px -4px rgba(0,0,0,0.75);
+  padding: 0px 15px 15px 15px;
+}
