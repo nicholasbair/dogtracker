@@ -4,25 +4,19 @@
   -webkit-box-shadow: 6px 4px 16px -4px rgba(0,0,0,0.75);
   -moz-box-shadow: 6px 4px 16px -4px rgba(0,0,0,0.75);
   box-shadow: 6px 4px 16px -4px rgba(0,0,0,0.75);
-}
-
-.form-card {
   padding: 0px 15px 15px 15px;
 }
 
 .dog-card {
-  padding: 0px 15px 15px 15px;
   margin: 0 15px 15px 0;
 }
 
 .dog-name {
   padding-top: 15px;
-  /*padding-left: 0px;*/
 }
 
 .avatar-container {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 0;
 }
 
 .avatar {
