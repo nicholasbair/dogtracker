@@ -15,8 +15,14 @@
   margin: 0 15px 15px 0;
 }
 
+.dog-name {
+  padding-top: 15px;
+  /*padding-left: 0px;*/
+}
+
 .avatar-container {
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .avatar {

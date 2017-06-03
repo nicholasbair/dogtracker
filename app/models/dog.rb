@@ -7,4 +7,8 @@ class Dog < ActiveRecord::Base
     scope: :user,
     message: "must be unique"
   }
+
+  def parse_activity_data
+    self.activities.first(15).collect { |activity| activity.duration }.join(",")
+  end
 end
