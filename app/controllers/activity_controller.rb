@@ -10,7 +10,7 @@ class ActivityController < ApplicationController
   end
 
   get '/activities' do
-    @activities = Activity.all
+    @activities = Activity.last(15).reverse
     erb :'/activities/index'
   end
 
