@@ -1,8 +1,24 @@
-.form-card {
+.card {
   background-color: #EEEEEE;
   border-radius: 5px;
   -webkit-box-shadow: 6px 4px 16px -4px rgba(0,0,0,0.75);
   -moz-box-shadow: 6px 4px 16px -4px rgba(0,0,0,0.75);
   box-shadow: 6px 4px 16px -4px rgba(0,0,0,0.75);
+}
+
+.form-card {
   padding: 0px 15px 15px 15px;
+}
+
+.dog-card {
+  padding: 0px 15px 15px 15px;
+  margin: 0 15px 15px 0;
+}
+
+.avatar-container {
+  padding-top: 10px;
+}
+
+.avatar {
+  border-radius: 25px;
 }
