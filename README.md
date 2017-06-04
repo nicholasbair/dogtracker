@@ -2,6 +2,8 @@
 
 Welcome to DogTracker!  A Sinatra web app with ActiveRecord and SQLite3.
 
+![dog1](https://cloud.githubusercontent.com/assets/8889403/26757813/b73d8cec-4897-11e7-811b-60c410ea0877.gif)
+
 ## Project goals
 See [spec](SPEC.md) for project requirements. Note that styling was not a primary focus.
 
