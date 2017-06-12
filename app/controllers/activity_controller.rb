@@ -51,9 +51,9 @@ class ActivityController < ApplicationController
   end
 
   patch '/activities/:id' do
-    activity = Activity.find(params[:id])
-    if activity.user_id == current_user.id && !params[:dogs].nil?
-      activity.update(
+    @activity = Activity.find(params[:id])
+    if @activity.user_id == current_user.id && !params[:dogs].nil?
+      @activity.update(
       name: params[:name],
       duration: params[:duration],
       dog_ids: params[:dogs]
@@ -62,7 +62,6 @@ class ActivityController < ApplicationController
       redirect '/activities'
     else
       flash[:message] = "Please select at least one dog."
-      @activity = Activity.find(params[:id])
       @dogs = current_user.dogs
       erb :'activities/edit'
     end
